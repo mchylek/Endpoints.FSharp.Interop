@@ -1,0 +1,21 @@
+<Project>
+  <PropertyGroup>
+    <Authors>Marcin Chylek</Authors>
+    
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);CS1701;CS1702;CS1591</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Features>strict</Features>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+    <ArtifactRoot>$(RepoRoot).artifacts/</ArtifactRoot>
+
+    <BaseIntermediateOutputPath>$(ArtifactRoot)intermediate/$(MSBuildProjectName)/</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    <BaseOutputPath>$(ArtifactRoot)output/</BaseOutputPath>
+    <OutputPath>$(BaseOutputPath)$(MSBuildProjectName)/</OutputPath>
+
+    <PackageOutputPath>$(ArtifactRoot)packages/$(MSBuildProjectName)/</PackageOutputPath>
+  </PropertyGroup>
+</Project>

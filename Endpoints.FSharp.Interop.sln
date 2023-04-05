@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution", ".Solution", "{782421E8-EF97-46E7-B972-512F32E29767}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\Directory.Build.props = ..\Directory.Build.props
+		..\Readme.md = ..\Readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Workflow", ".Workflow", "{8DB439EB-3628-4112-A20F-B2041EE32C4A}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
+		..\.github\workflows\pr.yml = ..\.github\workflows\pr.yml
+		..\.github\workflows\_build.yml = ..\.github\workflows\_build.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Endpoints.FSharp.Interop", "src\Endpoints.FSharp.Interop\Endpoints.FSharp.Interop.csproj", "{4E30488F-EB38-4776-9E04-A2D7582F20FD}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "FSharpWeb", "samples\FSharpWeb\FSharpWeb.fsproj", "{0042AFAB-949C-4460-96E1-7D151F55DDEE}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Endpoints.FSharp.Interop.Tests", "tests\Endpoints.FSharp.Interop.Tests\Endpoints.FSharp.Interop.Tests.fsproj", "{4DB71CAD-E8CB-4785-B903-EA8428FA369B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E30488F-EB38-4776-9E04-A2D7582F20FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E30488F-EB38-4776-9E04-A2D7582F20FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E30488F-EB38-4776-9E04-A2D7582F20FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E30488F-EB38-4776-9E04-A2D7582F20FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0042AFAB-949C-4460-96E1-7D151F55DDEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0042AFAB-949C-4460-96E1-7D151F55DDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0042AFAB-949C-4460-96E1-7D151F55DDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0042AFAB-949C-4460-96E1-7D151F55DDEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DB71CAD-E8CB-4785-B903-EA8428FA369B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DB71CAD-E8CB-4785-B903-EA8428FA369B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DB71CAD-E8CB-4785-B903-EA8428FA369B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DB71CAD-E8CB-4785-B903-EA8428FA369B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2850B09-F0C6-4881-8774-A478E7839019}
+	EndGlobalSection
+EndGlobal

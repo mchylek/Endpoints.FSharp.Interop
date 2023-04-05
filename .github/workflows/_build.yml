@@ -1,0 +1,61 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      packShipCandidate:
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build & Test
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Create build number
+      run: |
+        now=$(date +'%Y%m%d')
+        buildNumber=$now.$GITHUB_RUN_NUMBER
+        echo "BUILD_NUMBER=$buildNumber" >> $GITHUB_ENV
+        echo "$buildNumber"
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore -p:BuildNumber=$BUILD_NUMBER -p:SourceRevisionId=$GITHUB_SHA -p:ContinuousIntegrationBuild=true
+
+    - name: Test
+      run: dotnet test --configuration Release --no-restore --no-build --logger trx --results-directory ./.artifacts/tests 
+
+    - name: Upload artifacts (tests)
+      uses: actions/upload-artifact@v3
+      with:
+        name: dotnet-results
+        path: ./.artifacts/tests
+        retention-days: 5
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
+      
+    - name: Pack (ci)
+      run: dotnet pack --configuration Release --output ./.artifacts/ci -p:BuildNumber=$BUILD_NUMBER -p:SourceRevisionId=$GITHUB_SHA -p:ContinuousIntegrationBuild=true
+
+    - name: Pack (ship candidate)
+      if: ${{ inputs.packShipCandidate }}
+      run: dotnet pack --configuration Release --output ./.artifacts/ship -p:BuildNumber=$BUILD_NUMBER -p:SourceRevisionId=$GITHUB_SHA -p:ContinuousIntegrationBuild=true -p:IsShipCandidate=true
+
+    - name: Upload artifacts (packages)
+      uses: actions/upload-artifact@master
+      with:
+        name: nupkg
+        path: ./.artifacts/**/*.nupkg
+        retention-days: 5
