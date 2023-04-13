@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Summary>FSharp helpers for working with Minimal Api.</Summary>
     <Description>FSharp helpers for working with Minimal Api.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
