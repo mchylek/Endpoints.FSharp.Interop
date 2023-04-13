@@ -2,8 +2,8 @@
 
 Helper functions for working with Minimal Api in F#.
 
-Provide convenient way to produce `RequestDelegate`.
-By depending on `AsParametersAttribute` we can define parameters bag and apply desired metadata attributes.
+Provide convenient way to produce request `Delegate` compatible with `IEndpointRouteBuilder`.
+By depending on `AsParametersAttribute` it allow define parameters bag and apply desired metadata attributes.
 
 Supports AspNet Core 7.0+
 
