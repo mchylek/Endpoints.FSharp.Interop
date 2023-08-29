@@ -12,6 +12,18 @@ public static class Endpoint
     /// <typeparam name="TParam">Type of a structured parameter list. See <see cref="T:Microsoft.AspNetCore.Http.AsParametersAttribute" />.</typeparam>
     /// <typeparam name="TResult">The delegate result type.</typeparam>
     /// <returns>The delegate executed when the endpoint is matched.</returns>
+    public static Delegate Of<TParam, TResult>(FSharpFunc<TParam, TResult> requestDelegate)
+    {
+        return (HttpContext context, [AsParametersAttribute] TParam parameters) => requestDelegate.Invoke(parameters);
+    }
+
+    /// <summary>
+    /// Create delegate compatible with <see cref="T:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder" />.
+    /// </summary>
+    /// <param name="requestDelegate">The delegate with a structured parameter list marked with <see cref="T:Microsoft.AspNetCore.Http.AsParametersAttribute" />.</param>
+    /// <typeparam name="TParam">Type of a structured parameter list. See <see cref="T:Microsoft.AspNetCore.Http.AsParametersAttribute" />.</typeparam>
+    /// <typeparam name="TResult">The delegate result type.</typeparam>
+    /// <returns>The delegate executed when the endpoint is matched.</returns>
     public static Delegate OfAsync<TParam, TResult>(FSharpFunc<TParam, FSharpAsync<TResult>> requestDelegate)
     {
         return (HttpContext context, [AsParametersAttribute] TParam parameters) => 

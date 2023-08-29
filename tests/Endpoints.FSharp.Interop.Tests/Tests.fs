@@ -10,10 +10,12 @@ open Xunit
 type InteropTest() =
     
     [<Theory>]
+    [<InlineData("Endpoint.of",           "/sync/test")>]
     [<InlineData("Endpoint.OfAsync",      "/async/test")>]
     [<InlineData("Endpoint.OfTask",       "/task/test")>]
     [<InlineData("Endpoint.AsyncFactory", "/asyncf/test")>]
     [<InlineData("Endpoint.TaskFactory",  "/taskf/test")>]
+    [<InlineData("AnonymousRecord",       "/anonymous/test")>]
     member x.``Test_Invoke`` (method : string, path : string) : Task = task {
         use factory = new WebApplicationFactory<FSharpWeb.Program.App>()
         let client = factory.CreateClient()
@@ -21,4 +23,3 @@ type InteropTest() =
 
         Assert.Equal("Hello test!", result)
     }
-        

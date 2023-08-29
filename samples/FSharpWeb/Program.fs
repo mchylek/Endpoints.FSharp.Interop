@@ -15,7 +15,11 @@ module Program =
             [<FromRoute>] Name : string
         }
 
-    let hello (req : HelloRequest) = async {
+    let hello (req : HelloRequest) =
+        req.Logger.LogInformation("Hello request handler.")
+        $"Hello {req.Name}!"
+
+    let helloA (req : HelloRequest) = async {
         req.Logger.LogInformation("Hello request handler.")
         return $"Hello {req.Name}!"
     }
@@ -49,8 +53,10 @@ module Program =
             let app = builder.Build()
             app.UseRouting() |> ignore
 
+            app.MapGet("/sync/{name}", Endpoint.Of hello)
+            |> ignore
 
-            app.MapGet("/async/{name}", Endpoint.OfAsync hello)
+            app.MapGet("/async/{name}", Endpoint.OfAsync helloA)
             |> ignore
 
             app.MapGet("/task/{name}", Endpoint.OfTask helloT)
@@ -62,6 +68,9 @@ module Program =
 
             app.MapGet("/taskf/{name}"
                        , Endpoint.TaskFactory (fun ctx -> helloFT <| ctx.RequestServices.GetRequiredService()))
+            |> ignore
+
+            app.MapGet("/anonymous/{name}", Endpoint.Of (fun (req : {| Name : string |} ) -> $"Hello {req.Name}!"))
             |> ignore
 
             app.Run()

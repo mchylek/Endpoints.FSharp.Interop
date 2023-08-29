@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="../../samples/FSharpWeb/FSharpWeb.fsproj" />
-    <ProjectReference Include="../src/Endpoints.FSharp.Interop/Endpoints.FSharp.Interop.csproj" />
+    <ProjectReference Include="../../src/Endpoints.FSharp.Interop/Endpoints.FSharp.Interop.csproj" />
     
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />  

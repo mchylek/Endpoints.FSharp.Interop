@@ -5,18 +5,19 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution", ".Solution", "{782421E8-EF97-46E7-B972-512F32E29767}"
 	ProjectSection(SolutionItems) = preProject
-		..\.editorconfig = ..\.editorconfig
-		..\.gitattributes = ..\.gitattributes
-		..\.gitignore = ..\.gitignore
-		..\Directory.Build.props = ..\Directory.Build.props
-		..\Readme.md = ..\Readme.md
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		global.json = global.json
+		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Workflow", ".Workflow", "{8DB439EB-3628-4112-A20F-B2041EE32C4A}"
 	ProjectSection(SolutionItems) = preProject
-		..\.github\workflows\ci.yml = ..\.github\workflows\ci.yml
-		..\.github\workflows\pr.yml = ..\.github\workflows\pr.yml
-		..\.github\workflows\_build.yml = ..\.github\workflows\_build.yml
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+		.github\workflows\pr.yml = .github\workflows\pr.yml
+		.github\workflows\_build.yml = .github\workflows\_build.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Endpoints.FSharp.Interop", "src\Endpoints.FSharp.Interop\Endpoints.FSharp.Interop.csproj", "{4E30488F-EB38-4776-9E04-A2D7582F20FD}"
